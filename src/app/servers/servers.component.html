@@ -1,9 +1,22 @@
 <div class="tw-p-5">
   <div class="tw-mb-5">
-    <button mat-raised-button color="primary" [disabled]="!allowAddServer">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!allowAddServer"
+      (click)="onAddServer()"
+    >
       Add Server
     </button>
   </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Server name</mat-label>
+    <input matInput [(ngModel)]="serverName" />
+  </mat-form-field>
+  <p *ngIf="serverAdded; else noServer">server added with name: {{serverName}}</p>
+  <ng-template #noServer>
+    <p>no server created</p>
+  </ng-template>  
   <app-server></app-server>
   <app-server></app-server>
 </div>
